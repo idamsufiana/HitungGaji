@@ -1,2 +1,2 @@
 # HitungGaji
-Simple Apps hitung gaji beda negara
+Simple Apps calculate salary different country
