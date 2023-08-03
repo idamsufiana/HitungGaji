@@ -1,2 +1,2 @@
 # HitungGaji
-Simple Apps calculate salary different country
+Simple Apps calculate salary for different country
