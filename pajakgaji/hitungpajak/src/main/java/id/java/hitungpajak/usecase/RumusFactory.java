@@ -15,12 +15,18 @@ public class RumusFactory {
     @Autowired
     AppProperties appProperties;
 
+    @Autowired
+    VietnamService vietnamService;
+
+    @Autowired
+    IndonesiaService indonesiaService;
+
     public NegaraService getBangsa(String bangsa){
 
         if(bangsa.equalsIgnoreCase(appProperties.getID())){
-            return new IndonesiaService();
+            return indonesiaService;
         }else{
-            return new VietnamService();
+            return vietnamService;
         }
 
     }
