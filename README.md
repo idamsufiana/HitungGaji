@@ -2,4 +2,5 @@
 Simple Apps calculates salary for different country
 
 Backend only, developed using java spring boot, 
-Implementing factory pattern, it retrieves datas from mySQL
+Implementing factory pattern to calculate formula by country (Indonesia & Vietname)
+it retrieves data from mySQL
