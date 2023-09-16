@@ -7,7 +7,7 @@ It retrieves data from mySQL
 
 ## Build
 
-Create schema hitung_pajak
+Create schema hitung_pajak   
 Run `Mvn Spring-boot:run'.
 
 ## Rule
