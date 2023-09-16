@@ -10,6 +10,6 @@ it retrieves data from mySQL
 Run `Mvn Spring-boot:run'.
 
 ## Rule
-use postman and post Input.json as input payload
-
+post Input.json as input payload
+postman : http://localhost:8080/hitungpajak
 
