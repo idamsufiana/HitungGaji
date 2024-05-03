@@ -11,8 +11,10 @@ import id.java.hitungpajak.service.HitungPajakService;
 import id.java.hitungpajak.service.NegaraService;
 import id.java.hitungpajak.service.impl.IndonesiaService;
 import id.java.hitungpajak.service.impl.VietnamService;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class HitungPajakUsecase {
 
     @Autowired
@@ -36,6 +38,8 @@ public class HitungPajakUsecase {
         Integer asuransi = 0;
         Integer amount = 0;
         String jumlahAnak = "";
+
+        try {
 
         String status = requestData.getEmployee().getStatus();
         int child = requestData.getEmployee().getChilds();
@@ -69,9 +73,12 @@ public class HitungPajakUsecase {
             }
         }
         
-        
-        int ptkp = hitungPajakService.getTarif_ptkp(kebangsaan, jumlahAnak, status);
-        List<Double> pajak = hitungPajakService.findbyBangsa(kebangsaan);
+            int ptkp = hitungPajakService.getTarif_ptkp(kebangsaan, jumlahAnak, status);
+            List<Double> pajak = hitungPajakService.findbyBangsa(kebangsaan);
+        } catch (Exception e) {
+            log.error(e.getMessage()); 
+        }
+
 
         NegaraService negara = RumusFactory.getBangsa(kebangsaan);
         return negara.rumusHitung(total, ptkp, pajak, asuransi, appProperties.getLayer());

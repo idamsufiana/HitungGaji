@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import id.java.hitungpajak.config.properties.AppProperties;
 import id.java.hitungpajak.service.NegaraService;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class VietnamService implements NegaraService{
 
     @Autowired
@@ -21,11 +23,15 @@ public class VietnamService implements NegaraService{
     Double totalPajak= 0.0;
     Double layer1= 0.0;
     Double layer2= 0.0;
-
-    netto = (total*appProperties.getTahun()) - (asuransi*appProperties.getTahun()) - ptkp;
-    layer1 = layer * pajak.get(0)/appProperties.getPercent();
-    layer2 = (netto-layer) *pajak.get(1)/appProperties.getPercent();
-    totalPajak = (layer1 + layer2)/appProperties.getTahun();
+    try {
+        netto = (total*appProperties.getTahun()) - (asuransi*appProperties.getTahun()) - ptkp;
+        layer1 = layer * pajak.get(0)/appProperties.getPercent();
+        layer2 = (netto-layer) *pajak.get(1)/appProperties.getPercent();
+        totalPajak = (layer1 + layer2)/appProperties.getTahun();
+        
+    } catch (Exception e) {
+        log.error(e.getMessage());
+    }
 
     return totalPajak;
     }
